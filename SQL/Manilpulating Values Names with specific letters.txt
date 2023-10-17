@@ -1,0 +1,8 @@
+SELECT FirstName
+
+FirstName,
+EmailAddress
+
+From DimCustomer
+
+where FirstName Like '_R%'

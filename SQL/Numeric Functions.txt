@@ -1,0 +1,20 @@
+SELECT Top(10) PERCENT
+SalesOrderNumber As InvoiceNumber,
+OrderDate,
+
+SUM(SalesAmount) AS InvoiceSubtotatl,
+Round(SUM(SalesAmount),1) AS InvoiceSubtotatlRounded,
+
+SUM(TaxAmt) AS TaxAmount,
+Floor(SUM(TaxAmt)) AS TaxAmountFloor,
+
+SUM(OrderQuantity) AS TotalQuantity,
+SUM(SalesAmount) + SUM(TaxAmt) AS InvoiceTotal
+
+FROM FactInternetSales 
+where SalesTerritoryKey = 6
+
+Group By SalesOrderNumber, OrderDate 
+HAVING SUM(SalesAmount) > 1000
+
+ORDER BY InvoiceSubtotatl DESC

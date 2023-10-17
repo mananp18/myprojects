@@ -1,0 +1,20 @@
+Select Top(100)
+
+CONCAT(dc.FirstName,' ',dc.LastName) As CustomerName,
+dc.EmailAddress AS EmailAddress,
+sum(fs.SalesAmount) AS AmountSpent,
+dcy.CurrencyName as currency
+
+From FactInternetSales as fs
+    Inner Join DimCustomer as dc
+    ON fs.CustomerKey = dc.CustomerKey
+    Inner join DimCurrency as dcy
+    ON fs.CurrencyKey = dcy.CurrencyKey
+
+where dcy.CurrencyName = N'US Dollar'
+
+Group BY dc.FirstName, dc.LastName, dc.EmailAddress, dcy.CurrencyName
+
+--HAVING dcy.CurrencyName = N'US Dollar'
+
+order by AmountSpent desc

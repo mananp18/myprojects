@@ -1,0 +1,11 @@
+SELECT 
+
+EnglishProductName,
+EnglishDescription,
+Color, 
+[Status],
+Class
+
+FROM DimProduct
+
+where (Class <> 'H' OR class is NULL) AND [Status] IS NOT NULL

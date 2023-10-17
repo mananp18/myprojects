@@ -1,0 +1,24 @@
+SELECT 
+
+dp.EnglishProductName AS ProductName,
+dp.Color AS ProductColor,
+ISNULL(dp.Size,'UNKN') AS ProductSize,
+ISNULL(sum(fs.SalesAmount),0) AS SalesAmount
+
+From FactInternetSales AS fs
+    Inner JOIN DimProduct  AS dp
+    ON fs.ProductKey = dp.ProductKey
+
+WHERE dp.[Status] = N'Current'
+
+GROUP BY dp.EnglishProductName, dp.Color, dp.[Size]
+
+ORDER BY SalesAmount DESC
+
+/*SELECT
+    EnglishProductName
+
+FROM DimProduct
+
+WHERE [Status] = N'Current'
+*/

@@ -1,0 +1,8 @@
+FROM DimProduct AS dp
+    Left JOIN FactInternetSales AS fs
+    ON dp.ProductKey = fs.ProductKey
+WHERE dp.[Status] = N'Current'
+
+GROUP BY dp.EnglishProductName, dp.Color, dp.[Size]
+
+ORDER BY SalesAmount DESC

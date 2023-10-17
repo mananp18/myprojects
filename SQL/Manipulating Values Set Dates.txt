@@ -1,0 +1,8 @@
+SELECT
+
+MONTH('20201011') AS MonthNumerical
+
+Set LANGUAGE british
+
+SELECT 
+DATENAME(MONTH,'02/12/2020') AS MonthName

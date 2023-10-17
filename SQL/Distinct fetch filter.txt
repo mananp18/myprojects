@@ -1,0 +1,5 @@
+SELECT Distinct CustomerKey 
+
+From FactInternetSales
+
+Order BY CustomerKey
